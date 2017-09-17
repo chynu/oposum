@@ -6,6 +6,24 @@ import re
 import requests
 import json
 import html
+import pprint
+import pymongo
+import os
+from pymongo import MongoClient
+from flask import send_from_directory, render_template
+
+client = MongoClient('localhost', 27017)
+
+@app.route('/')
+def index():
+    return os.getcwd()
+
+@app.route('/<videoId>/page')
+def summaryPage(videoId):
+    root_dir = os.path.dirname(os.getcwd())
+    print(root_dir)
+    # return send_from_directory(os.path.join(root_dir, 'public', 'web'), 'summary.html')
+    return render_template('summary.html', title="lol", summary=summary(videoId))
 
 @app.route('/<videoId>', methods=["POST"])
 def summary(videoId):
@@ -56,3 +74,8 @@ def summarizer2(fullText, summaryLength):
     summary = json.loads(summaryJson)
     print("API Calls Remaining: " + summary['sm_api_limitation'])
     return summary['sm_api_content']
+
+def dbTest():
+    db = client.edusearch
+    summaries = db.summaries
+    return str(summaries.find_one())
