@@ -23,7 +23,7 @@ def summaryPage(videoId):
     root_dir = os.path.dirname(os.getcwd())
     print(root_dir)
     # return send_from_directory(os.path.join(root_dir, 'public', 'web'), 'summary.html')
-    return render_template('summary.html', title="lol", summary=summary(videoId))
+    return render_template('summary.html', title=videoTitle(videoId), summary=summary(videoId))
 
 @app.route('/<videoId>', methods=["POST"])
 def summary(videoId):
@@ -59,6 +59,11 @@ def downloadXml(videoId):
 
 # def summarizer(fulltext):
 #     return fulltext
+
+def videoTitle(videoId):
+    jsonData = requests.get('https://www.googleapis.com/youtube/v3/videos?id=' + videoId + '&key=AIzaSyB2Ma4BNgsk8nQYKZap9q77VbNl75l9mF8&fields=items(snippet(title))&part=snippet').text
+    jsonString = json.loads(jsonData)
+    return jsonString['items'][0]['snippet']['title']
 
 def summarizer(fullText):
     input = fullText.replace(".", ". ").replace("!", "! ") #parsed input from xml file
