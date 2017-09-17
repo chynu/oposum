@@ -2,10 +2,6 @@
 // asynchronous loading and idk how to do this lol
 setTimeout(loadButton, 2000);
 
-// Whether the video has been clicked?
-var opossum_clicked = false; // TODO: Show as already saved after checking db
-var video_id = window.location.href.split('/watch?v=')[1];
-
 /**
  * Loads the button onto the page.
  */
@@ -37,25 +33,6 @@ function loadButton() {
     }
   });
 };
-
-/**
- * Gets summary of currently playing video.
- */
-function getSummary() {
-  console.log('Retrieving summary...');
-  var oSummary = '';
-  $.ajax({
-    method: 'POST',
-    url: '/' + video_id,
-    data: video_id,
-    dataType: 'text',
-    success: function(data) {
-      console.log('Summary retrieved!');
-      oSummary = data;
-    }
-  });
-  return oSummary || "Hello. Here is some sample text.";
-}
 
 /**
  * Injects summary text into view.
