@@ -1,4 +1,5 @@
-let summaries = [
+// Reference
+var summaries = [
     {
 		'title': 'Summary 1',
 		'content': 'Content 1'
@@ -13,4 +14,8 @@ let summaries = [
     },
     
 ];
+let summaries = JSON.parse(localStorage.getItem('savedSummaries'));
+// add to list
 localStorage.setItem('savedSummaries', JSON.stringify(summaries));
+// Youtube Data API
+// https://www.googleapis.com/youtube/v3/videos?id=' + videoId + '&key=AIzaSyB2Ma4BNgsk8nQYKZap9q77VbNl75l9mF8&fields=items(snippet(title))&part=snippet
