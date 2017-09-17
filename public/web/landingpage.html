@@ -5,6 +5,7 @@
   <title>Oposum</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="img/ico" href="favicon.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -51,6 +52,11 @@
   .navbar-nav  li a:hover {
       color: #84CBE3 !important;
   }
+  .navbar img {
+    width:40px;
+    height:auto;
+    display:inline;
+  }
   </style>
 </head>
 <body>
@@ -64,7 +70,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Oposum</a>
+      <a class="navbar-brand" href="#">
+        <img src="../../media/oposum.png"> Oposum</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -76,14 +83,19 @@
 
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
-  <h3 class="margin">About OPOSUM</h3>
-  <p style="padding:0 40px;">Oposum is a Google Chrome extension that takes primarily educational videos and creates a short summary of what was discussed. This project was created by Celine Choo, Emily Leng, David Van, and Thaovy Van.</p>
+  <h3 class="margin">What is opo<b><i>sum</i></b>?</h3>
+  <p style="padding:0 40px;">Opo<b>sum</b> is a Google Chrome extension that takes lecture-based videos and generates
+  quick summaries of what was discussed. Oposum is a great tool for extracting the important content from long, informational
+  videos and can be a great tool for studying and review for students.</p>
     <a href="#" class="btn btn-default btn-lg">Install here!
   </a>
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-2 text-center">
+<div class="container-fluid bg-2 text-center" style="background:white; color:black;">
+  <h3>About the Developers</h3>
+  <p style="padding:0 40px;">This project was created by Celine Choo, Emily Leng, David Van, and Thaovy Van,
+  three university students who very well know the difficulties of procrastinating and studying.</p>
 </div>
 
 </body>
