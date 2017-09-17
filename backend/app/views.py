@@ -68,14 +68,14 @@ def videoTitle(videoId):
 def summarizer(fullText):
     input = fullText.replace(".", ". ").replace("!", "! ") #parsed input from xml file
     summaryLength = round(fullText.count('.') * .15)
-    summaryJson = requests.post('http://api.smmry.com/&SM_API_KEY=14CF8F8489&SM_LENGTH=' + str(summaryLength), data = {'sm_api_input': html.unescape(input)}).text
+    summaryJson = requests.post('http://api.smmry.com/&SM_API_KEY=6125B6FF2A&SM_LENGTH=' + str(summaryLength), data = {'sm_api_input': html.unescape(input)}).text
     summary = json.loads(summaryJson)
     print("API Calls Remaining: " + summary['sm_api_limitation'])
     return summary['sm_api_content']
 
 def summarizer2(fullText, summaryLength):
     input = fullText.replace(".", ". ").replace("!", "! ") #parsed input from xml file
-    summaryJson = requests.post('http://api.smmry.com/&SM_API_KEY=14CF8F8489&SM_LENGTH=' + summaryLength, data = {'sm_api_input': html.unescape(input)}).text
+    summaryJson = requests.post('http://api.smmry.com/&SM_API_KEY=6125B6FF2A&SM_LENGTH=' + summaryLength, data = {'sm_api_input': html.unescape(input)}).text
     summary = json.loads(summaryJson)
     print("API Calls Remaining: " + summary['sm_api_limitation'])
     return summary['sm_api_content']
