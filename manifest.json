@@ -4,6 +4,9 @@
   "name": "YouTube Thing",
   "description": "Generates summary of youtube videos.",
   "version": "1.0",
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  },
 
   "browser_action": {
     "default_icon": "media/bookmark.png",

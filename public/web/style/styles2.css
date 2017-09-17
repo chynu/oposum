@@ -1,0 +1,71 @@
+body {
+    background-color: #ECF0F1;
+}
+header {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 35px;
+    text-decoration: none;
+}
+h1 {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 50px;
+}
+h2 {
+    color: #34495E;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards li {
+  border: 2px solid #2C3E50;
+  border-radius:5px;
+  background-color: #34495E;
+  color: #fff;
+  flex: 1 1 200px;
+}
+
+.cards h2 {
+  background-color: #1ABC9C;
+  margin: 0;
+  padding: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.cards p {
+  padding: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px 1fr));
+  grid-gap: 20px;
+}
+
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
