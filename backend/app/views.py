@@ -12,7 +12,11 @@ def index(videoid):
     tree = ET.ElementTree(ET.fromstring(downloadXml(videoid)))
     fulltext = ''
     for text in tree.iter('text'):
-        fulltext = fulltext + text.text + " "
+        try:
+            fulltext = fulltext + text.text + " "
+        except:
+            print('error')
+
     summary = summarizer(fulltext.replace("\n", " ").strip())
     return summary
 
