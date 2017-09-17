@@ -12,12 +12,16 @@
   "permissions": [
     "tabs",
     "activeTab",
-    "storage"
+    "storage",
+    "*:**edusearch-eleng555.c9users.io/*"
   ],
+  "background": {
+    "scripts": ["public/ext/js/background.js"]
+  },
   
   "content_scripts": [{
     "matches": ["https://www.youtube.com/watch*"],
     "css": ["public/ext/style/style.css"],
-    "js": ["public/lib/jquery.js", "public/ext/js/render.js"]
+    "js": ["public/lib/jquery.js", "public/ext/js/render.js", "public/ext/js/oposum.js"]
   }]
 }

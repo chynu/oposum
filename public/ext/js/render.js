@@ -1,6 +1,26 @@
+/**
+ * 
+ * Oposum - Video tutorial summary app.
+ * 
+ * When a youtube video page is loaded, render.js renders the proper UI onto
+ * the page to allow users to generate the summary.
+ */
+
 // Waits for page to load. Temporary hack bc YT uses
 // asynchronous loading and idk how to do this lol
 setTimeout(loadButton, 2000);
+
+var style = Object.create(null);
+style.body = 'font-size:14px;';
+style.h1 = 'font-size:18px;';
+
+var currentTab = window.location.href;
+var split_url = currentTab.split('/watch?v=');
+var videoId = split_url[1];
+
+// Whether the video has been clicked?
+var opossum_clicked = false; // TODO: Show as already saved after checking db
+// TODO: Catch for when there are second specifications afterwards.
 
 /**
  * Loads the button onto the page.
@@ -17,29 +37,47 @@ function loadButton() {
 
   var button = document.createElement('button');
   button.textContent = 'COOL BUTTON';
-  button.setAttribute('id', 'opossum');
+  button.setAttribute('id', 'opossum_button');
 
   console.log('Loading button...');
+  // Injects the button.
   header.insertBefore(button, header.children[0]);
-  $('#meta-contents').append('<div id="opossum_text"></div>');
+  // $('.selectable-content.style-scope.paper-menu').append(button);
 
-  $('#opossum').click(function() {
+  // Injects the contents.
+  $('#meta-contents').append(
+      '<div id="oposum">' +
+        '<div id="opossum_text">' +
+          '<div style="' + style.h1 + '">Summary</div>' +
+          '<p style="' + style.body + '"></p>' +
+        '</div>' +
+      '</div>');
+
+  $('#opossum_button').click(function() {
     opossum_clicked = !opossum_clicked;
 
     if (opossum_clicked) {
-      injectText(getSummary());
+      getSummary(videoId, function(data) {
+        $('#opossum_text p').html(data);
+      });
     } else {
-      injectText("");
+      $('#opossum_text p').html('');
     }
   });
 };
 
 /**
- * Injects summary text into view.
+ * Gets summary of currently playing video.
  */
-function injectText(htmlText) {
-  if (htmlText) {
-    htmlText += '<br><hr><br><br>';
-  }
-  $('#opossum_text').html(htmlText);
+function getSummary(video_id, grabText) {
+  console.log('Retrieving summary...');
+  $.ajax({
+    method: 'POST',
+    url: 'https://edusearch-eleng555.c9users.io/' + video_id,
+    dataType: 'text',
+    success: function(data) {
+      console.log('Summary retrieved!');
+      grabText(data);
+    }
+  });
 }
