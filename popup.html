@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <style>
+@import url('https://fonts.googleapis.com/css?family=Lato');
 html, body {
   min-width:200px;
   margin:0;
   background:#F5F5F5;
+  font-family:'Lato';
 }
 h3 {
   background:#B5DBE8;
@@ -25,6 +27,14 @@ a {
   color:black;
   text-decoration:none;
 }
+#saved {
+  border:none;
+  padding:10px;
+  text-transform:uppercase;
+  font-size:10px;
+  background:#C3DDE6;
+}
+
 </style>
 <link href="https://cdn.muicss.com/mui-0.9.25/css/mui.min.css" rel="stylesheet" type="text/css" />
 <h3 style="margin-top:-5px">
@@ -32,5 +42,6 @@ a {
 opo<span style="color:white;">sum</span>
 </h3>
 <p>Oposum has been successfully installed. You can click on the "summarize" button under the description of any YouTube video to see the auto-generated summary of a video of your choice. Please note this works best for closed-captioned tutorial videos.</p>
-<p style="text-align:center;"><a href="https://github.com/chynu/edusearch">github</a> / website</p>
+<center><button id="saved">See Saved Summaries</button></center>
+<p style="text-align:center;"><a href="https://github.com/chynu/edusearch">github</a> / <a href="">website</a></p>
 </html>
