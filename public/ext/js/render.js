@@ -7,6 +7,7 @@ var video_id = window.location.href.split('/watch?v=')[1];
  * Loads the button onto the page.
  */
 function loadButton() {
+  console.log('loading button');
   var menuContainer = document.getElementById('menu-container');
   var header = document.getElementsByTagName('ytd-video-primary-info-renderer')[0];
 
@@ -19,6 +20,7 @@ function loadButton() {
   button.textContent = 'COOL BUTTON';
   button.setAttribute('id', 'opossum');
 
+  console.log('Loading button...');
   header.insertBefore(button, header.children[0]);
   $('#meta-contents').append('<div id="opossum_text"></div>');
 
@@ -38,7 +40,8 @@ function loadButton() {
  */
 function getSummary() {
   // TODO: Get summary of video currently playing.
-  var oSummary = data;
+  console.log('Retrieving summary...');
+  var oSummary = '';
   $.ajax({
     method: 'POST',
     url: '/' + video_id,
