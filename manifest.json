@@ -14,9 +14,9 @@
     "storage"
   ],
   
-  "content_scripts": {
-    "matches": ["http://youtube.com/watch*"],
+  "content_scripts": [{
+    "matches": ["https://www.youtube.com/watch*"],
     "css": ["public/ext/style/style.css"],
-    "js": ["public/ext/js/render.js"]
-  }
+    "js": ["public/lib/jquery.js", "public/ext/js/render.js"]
+  }]
 }
