@@ -38,9 +38,6 @@ function loadButton() {
   }
 
   console.log('Loading button...');
-  // Injects the button.
-  // $('#subscribe-button').get(0).append(button);
-  // $('.selectable-content.style-scope.paper-menu').append(button);
 
   // Injects the contents.
   $('#meta-contents').append(
@@ -78,12 +75,7 @@ function loadButton() {
     $.ajax({
       url: 'https://www.googleapis.com/youtube/v3/videos?id=' + videoId + '&key=AIzaSyB2Ma4BNgsk8nQYKZap9q77VbNl75l9mF8&fields=items(snippet(title))&part=snippet',
       success: function(data) {
-        var summaries = JSON.parse(localStorage.getItem('savedSummaries')) || [];
-        summaries.push({
-          'title': data.items[0].snippet.title,
-          'content': $('#opossum_text p').html()
-        });
-        localStorage.setItem('savedSummaries', JSON.stringify(summaries));
+        store(data.items[0].snippet.title, $('#opossum_text p').html(), function() {});
       }
     });
     $('#save_opossum').html('Saved');
@@ -93,6 +85,21 @@ function loadButton() {
     });
   });
 };
+
+function store(title, content, fcn) {
+  // Save it using the Chrome extension storage API.
+  var summaries = [];
+  chrome.storage.sync.get(['summaries'], function(items) {
+    summaries = items.summaries;
+    summaries.push({
+      'title': title,
+      'content': content
+    });
+    chrome.storage.sync.set({
+      'summaries': summaries
+    }, fcn);
+  });
+}
 
 /**
  * Gets summary of currently playing video.

@@ -6,4 +6,6 @@
  * of the currently open URL.
  */
 
-chrome.runtime.sendMessage("send");
+chrome.runtime.sendMessage({method: "getLocalStorage", key: "status"}, function(response) {
+  console.log(response.data);
+});

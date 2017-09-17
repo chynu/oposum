@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "YouTube Thing",
+  "name": "oposum",
   "description": "Generates summary of youtube videos.",
   "version": "1.0",
 
