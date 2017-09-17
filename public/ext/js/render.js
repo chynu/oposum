@@ -90,7 +90,7 @@ function store(title, content, fcn) {
   // Save it using the Chrome extension storage API.
   var summaries = [];
   chrome.storage.sync.get(['summaries'], function(items) {
-    summaries = items.summaries;
+    summaries = items.summaries || [];
     summaries.push({
       'title': title,
       'content': content

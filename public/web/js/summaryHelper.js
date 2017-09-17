@@ -6,7 +6,7 @@ function get() {
     console.log('sUMMARIES');
     console.log(savedSummaries);
     let main = document.getElementById('some-id');
-    if (savedSummaries !== null && savedSummaries.length !== 0) {
+    if (savedSummaries !== undefined && savedSummaries !== null && savedSummaries.length !== 0) {
       for (summary of savedSummaries) {
         let card = createCard(summary.title, summary.content);
         main.prepend(card);
